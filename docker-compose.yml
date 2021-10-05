@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:10-alpine
+    ports:
+      - 5400:5432
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=pavlenkodev
+      - POSTGRES_PASSWORD=change
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro

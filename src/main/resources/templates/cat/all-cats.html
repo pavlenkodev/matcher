@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мимиметр</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row" style="justify-content: center">
+        <div class="col-12 mb-3" style="text-align: center">
+            <h3>Кто из них мимишнее?</h3>
+        </div>
+        <div th:each="cat : ${cats}" class="card col-4" style="width: 18rem; margin: 30px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="card-img-top" th:src="${cat.imageUrl}" style="width: 100%;">
+                </div>
+                <div class="card-body">
+                    <div class="col-lg-12" style="display: flex; justify-content: center">
+                        <a class="btn btn-info mt-2" th:href="@{/like/{id}(id=${cat.id})}"><h4
+                                th:text="${cat.name}"></h4></a>
+                    </div>
+                    <!--                    <div class="col-lg-12" style="display: flex; flex-direction: column;">-->
+                    <!--                        <a class="btn btn-info mt-2" th:href="@{/like/{id}(id=${cat.id})}">Выбрать</a>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12" style="display: flex; justify-content: center">
+            <a class="btn btn-info mt-2" th:href="@{/top10}">Показать топ-10 кошек!</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<head>
+</head>
+<body>
+
+<div class="container mt-5" >
+    <div class="row" style="display: flex; justify-content: center">
+       <h3 style="text-align: center; margin-bottom: 40px">Логин</h3>
+    </div>
+    <div style="display: flex; justify-content: center">
+        <form th:action="@{/login}" method="post">
+            <div><label> Логин : <input class="form-control" type="text" name="username"/> </label></div>
+            <div><label> Пароль : <input class="form-control" type="password" name="password"/> </label></div>
+            <div><input class="btn btn-primary mt-2" style="float: right; width: 208px" type="submit" value="Войти"/></div>
+            <a class="btn btn-success mt-2" style="text-align: center; width: 208px" th:href="@{/registration}"><h7>Зарегистрируетесь?</h7></a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
