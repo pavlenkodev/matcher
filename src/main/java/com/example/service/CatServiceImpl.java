@@ -75,12 +75,36 @@ public class CatServiceImpl implements CatService {
 
     @Override
     public List<Cat> findAll() {
+        List<Cat> emptyList = new ArrayList<>();
+
         List<Cat> all = catRepository.findAll();
         Collections.shuffle(all);
         List<Cat> result = new ArrayList<>();
         result.add(all.get(0));
         result.add(all.get(1));
-        return result;
 
+        if (checkUniquePair(result)) {
+            return result;
+        }
+
+        return emptyList;
+    }
+
+    public boolean checkUniquePair(List<Cat> catsPair) {
+        Cat catKey = catsPair.get(0);
+        Cat catValue = catsPair.get(1);
+
+        if (cats.isEmpty()) {
+            cats.put(catKey, catValue);
+            return true;
+        }
+
+        if (cats.containsKey(catKey) && cats.get(catKey).getId().equals(catValue.getId()) ||
+                cats.containsKey(catValue) && cats.get(catValue).getId().equals(catKey.getId())) {
+            return false;
+        }
+        cats.put(catKey, catValue);
+
+        return true;
     }
 }

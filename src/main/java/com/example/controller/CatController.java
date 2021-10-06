@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Data
 @Controller
@@ -18,7 +21,13 @@ public class CatController {
     @GetMapping("/all-cats")
     public String getAllCats(Model model
     ) {
-        model.addAttribute("cats", catService.findAll());
+        List<Cat> finalCheckCats = catService.findAll();
+
+        if (finalCheckCats.isEmpty()) {
+            return "redirect:/top10";
+        }
+
+        model.addAttribute("cats", finalCheckCats);
         return "cat/all-cats";
     }
 
